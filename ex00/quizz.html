@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ClapTrap Implementation Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 3px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .answer {
+            margin-top: 10px;
+            display: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById('answer' + id);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>ClapTrap Implementation Quiz</h1>
+    
+    <div class="question">
+        <h3>Question 1: Constructor Implementation</h3>
+        <p>Complete the default constructor for the ClapTrap class:</p>
+        <div class="code">ClapTrap::ClapTrap(void)
+: _hp(...)
+, _mp(...)
+, _atk(...)
+{
+    std::cout << "..." << std::endl;
+    setName("...");
+    return;
+}</div>
+        <button onclick="toggleAnswer(1)">Show Answer</button>
+        <div id="answer1" class="answer">
+            <div class="code">ClapTrap::ClapTrap(void)
+: _hp(10)
+, _mp(10)
+, _atk(0)
+{
+    std::cout << "ClapTrap default constructor called" << std::endl;
+    setName("Default");
+    return;
+}</div>
+        </div>
+    </div>
+    
+    <div class="question">
+        <h3>Question 2: Const Correctness</h3>
+        <p>Which of the following methods should be marked as const?</p>
+        <ol>
+            <li>attack(const std::string& target)</li>
+            <li>getName(void)</li>
+            <li>setHp(int hp)</li>
+            <li>toString(void)</li>
+        </ol>
+        <button onclick="toggleAnswer(2)">Show Answer</button>
+        <div id="answer2" class="answer">
+            <p>Methods that should be marked as const:</p>
+            <ul>
+                <li>getName(void) - This is a getter that doesn't modify the object</li>
+                <li>toString(void) - This method only reads the object's state without modifying it</li>
+            </ul>
+            <p>Methods that should NOT be const:</p>
+            <ul>
+                <li>attack(const std::string& target) - This modifies the object's energy points</li>
+                <li>setHp(int hp) - This modifies the object's hit points</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="question">
+        <h3>Question 3: Assignment Operator</h3>
+        <p>Fix the assignment operator implementation:</p>
+        <div class="code">ClapTrap& ClapTrap::operator=(const ClapTrap& rhs)
+{
+    std::cout << "Assignment operator called" << std::endl;
+    if (this != &rhs)
+        this->_name = rhs.getName();
+    return (*this);
+}</div>
+        <button onclick="toggleAnswer(3)">Show Answer</button>
+        <div id="answer3" class="answer">
+            <div class="code">ClapTrap& ClapTrap::operator=(const ClapTrap& rhs)
+{
+    std::cout << "Assignment operator called" << std::endl;
+    if (this != &rhs)
+    {
+        this->_name = rhs.getName();
+        this->_hp = rhs.getHp();
+        this->_mp = rhs.getMp();
+        this->_atk = rhs.getAtk();
+    }
+    return (*this);
+}</div>
+            <p>The assignment operator should copy all attributes, not just the name.</p>
+        </div>
+    </div>
+    
+    <div class="question">
+        <h3>Question 4: takeDamage Method</h3>
+        <p>What's wrong with this takeDamage implementation and how would you fix it?</p>
+        <div class="code">void ClapTrap::takeDamage(unsigned int amount)
+{
+    std::cout << "[DAMAGE] ClapTrap "
+              << _name << " has taken "
+              << amount << " point of damage!"
+              << std::endl;
+    _hp -= amount;
+    if (!_hp || _hp < 0)
+        std::cout << "ClapTrap " << _name << " has died" << std::endl;
+    std::cout << "==> Hp left: " << _hp
+              << " ==> Mp left: " << _mp
+              << std::endl;
+}</div>
+        <button onclick="toggleAnswer(4)">Show Answer</button>
+        <div id="answer4" class="answer">
+            <p>Issues:</p>
+            <ol>
+                <li>The hit points can become negative, which doesn't make sense</li>
+                <li>The condition <code>!_hp || _hp < 0</code> is redundant since <code>!_hp</code> already checks if _hp is 0</li>
+            </ol>
+            <p>Fixed implementation:</p>
+            <div class="code">void ClapTrap::takeDamage(unsigned int amount)
+{
+    std::cout << "[DAMAGE] ClapTrap "
+              << _name << " has taken "
+              << amount << " point of damage!"
+              << std::endl;
+    
+    if (amount >= (unsigned int)_hp)
+    {
+        _hp = 0;
+        std::cout << "ClapTrap " << _name << " has died" << std::endl;
+    }
+    else
+    {
+        _hp -= amount;
+    }
+    
+    std::cout << "==> Hp left: " << _hp
+              << " ==> Mp left: " << _mp
+              << std::endl;
+}</div>
+        </div>
+    </div>
+    
+    <div class="question">
+        <h3>Question 5: ClapTrap Behavior</h3>
+        <p>What happens when a ClapTrap with 0 energy points tries to attack?</p>
+        <button onclick="toggleAnswer(5)">Show Answer</button>
+        <div id="answer5" class="answer">
+            <p>When a ClapTrap with 0 energy points tries to attack, it can't perform the action. The attack method should check if there are enough energy points and display an appropriate message:</p>
+            <div class="code">if (this->_hp && this->_mp)
+{
+    // Perform attack
+}
+else if (!this->_hp)
+    std::cout << "[DEAD] " << _name << " is dead - Attack not possible!" << std::endl;
+else
+    std::cout << "[NO_MP]"<< _name << " has no more mp - Attack not possible!" << std::endl;</div>
+        </div>
+    </div>
+</body>
+</html>
+
