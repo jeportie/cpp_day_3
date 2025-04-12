@@ -122,8 +122,10 @@ void ClapTrap::takeDamage(unsigned int amount)
         _hp = 0;
         std::cout << "ClapTrap " << _name << " has died" << std::endl;
     }
-    else
-        _hp -= amount;
+    else 
+	{
+		_hp -= amount;
+	}
 	std::cout << "==> Hp left: " << _hp
 			  << " ==> Mp left: " << _mp
 			  << std::endl;
