@@ -15,19 +15,22 @@
 
 #include "ClapTrap.hpp"
 # include <iostream>
+#include <string>
 
-class ScavTrap : ClapTrap
+class ScavTrap : public ClapTrap
 {
 public:
 	ScavTrap(void);
-	ScavTrap(int const fooNb);
-	ScavTrap(ScavTrap const & src);
+	ScavTrap(std::string const name);
+	ScavTrap(const ScavTrap& src);
 	~ScavTrap(void);
 
 	ScavTrap & operator=(ScavTrap const & rhs);
 
-	int getFoo(void) const;
-	std::string toString(void) const; // serialise class to string
+	void		attack(const std::string& target);
+	void		guardGate(void);
+
+	std::string	toString(void) const; // serialise class to string
 
 private:
 	int _foo;

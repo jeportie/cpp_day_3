@@ -1,0 +1,266 @@
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C++ Inheritance Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+            display: none;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .inheritance-diagram {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>C++ Inheritance Quiz</h1>
+    <p>Test your understanding of inheritance concepts in C++.</p>
+    
+    <div class="question" id="q1">
+        <h3>Question 1: What is inheritance in C++?</h3>
+        <div class="options">
+            <input type="radio" name="q1" value="a"> a) A mechanism to create multiple instances of a class<br>
+            <input type="radio" name="q1" value="b"> b) A mechanism where a class inherits attributes and methods from another class<br>
+            <input type="radio" name="q1" value="c"> c) A way to hide implementation details of a class<br>
+            <input type="radio" name="q1" value="d"> d) A technique to overload functions in a class<br>
+        </div>
+        <div class="explanation" id="exp1">
+            <strong>Correct Answer: b) A mechanism where a class inherits attributes and methods from another class</strong><br>
+            Inheritance is a fundamental concept in OOP that allows a class to inherit properties and behaviors from another class, promoting code reuse and establishing relationships between classes.
+        </div>
+    </div>
+    
+    <div class="question" id="q2">
+        <h3>Question 2: In the following code, what is the relationship between ScavTrap and ClapTrap?</h3>
+        <pre><code>class ClapTrap {
+    // ...
+};
+
+class ScavTrap : public ClapTrap {
+    // ...
+};</code></pre>
+        <div class="options">
+            <input type="radio" name="q2" value="a"> a) ScavTrap is a friend of ClapTrap<br>
+            <input type="radio" name="q2" value="b"> b) ScavTrap has a ClapTrap (composition)<br>
+            <input type="radio" name="q2" value="c"> c) ScavTrap is a ClapTrap (inheritance)<br>
+            <input type="radio" name="q2" value="d"> d) ClapTrap is a ScavTrap (inheritance)<br>
+        </div>
+        <div class="explanation" id="exp2">
+            <strong>Correct Answer: c) ScavTrap is a ClapTrap (inheritance)</strong><br>
+            The code shows that ScavTrap inherits publicly from ClapTrap, establishing an "is-a" relationship. This means a ScavTrap is a specialized type of ClapTrap.
+        </div>
+    </div>
+    
+    <div class="question" id="q3">
+        <h3>Question 3: When a derived class object is created and destroyed, what is the order of constructor and destructor calls?</h3>
+        <div class="options">
+            <input type="radio" name="q3" value="a"> a) Base constructor, derived constructor, base destructor, derived destructor<br>
+            <input type="radio" name="q3" value="b"> b) Derived constructor, base constructor, derived destructor, base destructor<br>
+            <input type="radio" name="q3" value="c"> c) Base constructor, derived constructor, derived destructor, base destructor<br>
+            <input type="radio" name="q3" value="d"> d) Derived constructor, base constructor, base destructor, derived destructor<br>
+        </div>
+        <div class="explanation" id="exp3">
+            <strong>Correct Answer: c) Base constructor, derived constructor, derived destructor, base destructor</strong><br>
+            Construction happens from base to derived (building the foundation first), while destruction happens from derived to base (dismantling from the top down). This ensures that the derived part of an object never accesses a destroyed base part.
+        </div>
+    </div>
+    
+    <div class="question" id="q4">
+        <h3>Question 4: What does the following constructor do in the ScavTrap class?</h3>
+        <pre><code>ScavTrap::ScavTrap(std::string const name) : ClapTrap(name)
+{
+    setHp(100);
+    setMp(50);
+    setAtk(20);
+}</code></pre>
+        <div class="options">
+            <input type="radio" name="q4" value="a"> a) It creates a ScavTrap with default values<br>
+            <input type="radio" name="q4" value="b"> b) It calls the ClapTrap constructor with the name parameter, then sets ScavTrap-specific values<br>
+            <input type="radio" name="q4" value="c"> c) It overrides the ClapTrap constructor<br>
+            <input type="radio" name="q4" value="d"> d) It creates a ClapTrap object inside the ScavTrap<br>
+        </div>
+        <div class="explanation" id="exp4">
+            <strong>Correct Answer: b) It calls the ClapTrap constructor with the name parameter, then sets ScavTrap-specific values</strong><br>
+            The constructor uses an initialization list to call the base class (ClapTrap) constructor with the name parameter. Then, in the body, it sets ScavTrap-specific attribute values that override the ones inherited from ClapTrap.
+        </div>
+    </div>
+    
+    <div class="question" id="q5">
+        <h3>Question 5: What is method overriding in the context of inheritance?</h3>
+        <div class="options">
+            <input type="radio" name="q5" value="a"> a) Creating multiple methods with the same name but different parameters<br>
+            <input type="radio" name="q5" value="b"> b) Hiding a base class method by declaring a method with the same name in the derived class<br>
+            <input type="radio" name="q5" value="c"> c) Making a method inaccessible in the derived class<br>
+            <input type="radio" name="q5" value="d"> d) Creating a new method in the derived class that doesn't exist in the base class<br>
+        </div>
+        <div class="explanation" id="exp5">
+            <strong>Correct Answer: b) Hiding a base class method by declaring a method with the same name in the derived class</strong><br>
+            Method overriding occurs when a derived class provides its own implementation of a method that is already defined in the base class. This allows the derived class to customize or extend the behavior inherited from the base class.
+        </div>
+    </div>
+    
+    <div class="question" id="q6">
+        <h3>Question 6: Complete the code to make ScavTrap inherit from ClapTrap and override the attack method:</h3>
+        <pre><code>class ClapTrap {
+public:
+    void attack(const std::string& target);
+};
+
+class ScavTrap : ________ ClapTrap {
+public:
+    ________ attack(const std::string& target);
+};</code></pre>
+        <div class="options">
+            <input type="radio" name="q6" value="a"> a) private, virtual void<br>
+            <input type="radio" name="q6" value="b"> b) public, void<br>
+            <input type="radio" name="q6" value="c"> c) protected, virtual void<br>
+            <input type="radio" name="q6" value="d"> d) friend, void<br>
+        </div>
+        <div class="explanation" id="exp6">
+            <strong>Correct Answer: b) public, void</strong><br>
+            To make ScavTrap inherit publicly from ClapTrap, we use "public" as the access specifier. To override the attack method, we simply declare a method with the same signature in the derived class. In C++98, the "override" keyword wasn't available, so we just use "void attack(const std::string& target)".
+        </div>
+    </div>
+    
+    <div class="question" id="q7">
+        <h3>Question 7: With public inheritance, what happens to the access levels of base class members in the derived class?</h3>
+        <div class="options">
+            <input type="radio" name="q7" value="a"> a) Public members become private, protected members become private, private members become inaccessible<br>
+            <input type="radio" name="q7" value="b"> b) Public members become public, protected members become protected, private members remain inaccessible<br>
+            <input type="radio" name="q7" value="c"> c) All members become public in the derived class<br>
+            <input type="radio" name="q7" value="d"> d) All members maintain their original access levels but can be accessed directly in the derived class<br>
+        </div>
+        <div class="explanation" id="exp7">
+            <strong>Correct Answer: b) Public members become public, protected members become protected, private members remain inaccessible</strong><br>
+            With public inheritance, the access levels of base class members are preserved in the derived class, except for private members which are always inaccessible directly from the derived class.
+        </div>
+    </div>
+    
+    <div class="question" id="q8">
+        <h3>Question 8: Why is the destruction order (derived destructor first, then base destructor) important?</h3>
+        <div class="options">
+            <input type="radio" name="q8" value="a"> a) It's not important; the order could be reversed without issues<br>
+            <input type="radio" name="q8" value="b"> b) To ensure that the derived class can access base class members during destruction<br>
+            <input type="radio" name="q8" value="c"> c) To ensure that the derived part of an object never accesses a destroyed base part<br>
+            <input type="radio" name="q8" value="d"> d) It's a C++ rule with no practical significance<br>
+        </div>
+        <div class="explanation" id="exp8">
+            <strong>Correct Answer: c) To ensure that the derived part of an object never accesses a destroyed base part</strong><br>
+            The destruction order (derived first, then base) ensures that the derived class destructor can still access base class members if needed during its execution. If the base class was destroyed first, the derived destructor might try to access already destroyed base class members, leading to undefined behavior.
+        </div>
+    </div>
+    
+    <div class="question" id="q9">
+        <h3>Question 9: In our exercise, what is the purpose of the guardGate() method in ScavTrap?</h3>
+        <div class="options">
+            <input type="radio" name="q9" value="a"> a) To override a method from ClapTrap<br>
+            <input type="radio" name="q9" value="b"> b) To provide a unique functionality specific to ScavTrap<br>
+            <input type="radio" name="q9" value="c"> c) To access private members of ClapTrap<br>
+            <input type="radio" name="q9" value="d"> d) To initialize ScavTrap's attributes<br>
+        </div>
+        <div class="explanation" id="exp9">
+            <strong>Correct Answer: b) To provide a unique functionality specific to ScavTrap</strong><br>
+            The guardGate() method is a special ability unique to ScavTrap that doesn't exist in ClapTrap. It demonstrates how a derived class can extend the functionality of its base class by adding new methods.
+        </div>
+    </div>
+    
+    <div class="question" id="q10">
+        <h3>Question 10: What would happen if we tried to access a private member of ClapTrap directly in ScavTrap?</h3>
+        <div class="options">
+            <input type="radio" name="q10" value="a"> a) It would work fine because ScavTrap inherits from ClapTrap<br>
+            <input type="radio" name="q10" value="b"> b) It would cause a compilation error because private members are not accessible in derived classes<br>
+            <input type="radio" name="q10" value="c"> c) It would work but generate a warning<br>
+            <input type="radio" name="q10" value="d"> d) It would cause a runtime error<br>
+        </div>
+        <div class="explanation" id="exp10">
+            <strong>Correct Answer: b) It would cause a compilation error because private members are not accessible in derived classes</strong><br>
+            Private members of a base class are not accessible directly in derived classes. This is why we use getter and setter methods (like getHp(), setHp()) to access and modify these attributes in the derived class.
+        </div>
+    </div>
+    
+    <button onclick="checkAnswers()">Submit Answers</button>
+    <div class="result" id="result"></div>
+    
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'c',
+                q4: 'b',
+                q5: 'b',
+                q6: 'b',
+                q7: 'b',
+                q8: 'c',
+                q9: 'b',
+                q10: 'b'
+            };
+            
+            let score = 0;
+            let total = Object.keys(answers).length;
+            
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                let explanation = document.getElementById(`exp${q.substring(1)}`);
+                
+                if (selected) {
+                    if (selected.value === answers[q]) {
+                        score++;
+                    }
+                }
+                
+                // Show all explanations
+                explanation.style.display = 'block';
+            }
+            
+            document.getElementById('result').innerHTML = `Your score: ${score}/${total}`;
+        }
+    </script>
+</body>
+</html>
+
