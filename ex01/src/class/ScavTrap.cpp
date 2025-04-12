@@ -60,7 +60,7 @@ void ScavTrap::attack(const std::string& target)
 {
 	if (getHp() && getMp())
 	{
-		std::cout << "[ATTACK] ScavTrap "
+		std::cout << "[ATTACK] "
 				  << getName() << " attacks "
 				  << target << ", causing "
 				  << getAtk() << " points of damage!"
@@ -75,7 +75,7 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate(void)
 {
-	std::cout << "ScavTrap " << getName() << " is now in Gate keeper mode." << std::endl;
+	std::cout << getName() << " is now in Gate keeper mode." << std::endl;
 }
 
 std::ostream & operator<<(std::ostream & out, ScavTrap const & in)

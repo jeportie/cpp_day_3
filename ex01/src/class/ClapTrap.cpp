@@ -51,7 +51,7 @@ ClapTrap::~ClapTrap(void)
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& rhs)
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "ClapTrap assignment operator called" << std::endl;
 	if (this != &rhs)
     {
         this->_name = rhs.getName();
@@ -76,7 +76,7 @@ void ClapTrap::attack(const std::string& target)
 {
 	if (this->_hp && this->_mp)
 	{
-		std::cout << "[ATTACK] ClapTrap "
+		std::cout << "[ATTACK] "
 				  << _name << " attacks "
 				  << target << ", causing "
 				  << _atk << " point of damage!"
@@ -93,7 +93,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hp && this->_mp)
 	{
-		std::cout << "[REPAIR] ClapTrap "
+		std::cout << "[REPAIR] "
 				  << _name << " repairs itself... "
 				  << std::endl
 				  << amount << " hp restored!"
@@ -112,7 +112,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "[DAMAGE] ClapTrap "
+	std::cout << "[DAMAGE] "
 			  << _name << " has taken "
 			  << amount << " point of damage!"
 			  << std::endl;
@@ -120,7 +120,7 @@ void ClapTrap::takeDamage(unsigned int amount)
     if (amount >= (unsigned int)_hp)
     {
         _hp = 0;
-        std::cout << "ClapTrap " << _name << " has died" << std::endl;
+        std::cout << _name << " has died" << std::endl;
     }
     else 
 	{

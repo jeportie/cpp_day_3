@@ -43,13 +43,15 @@ int	main(void)
 	
 	// Test with no energy points
 	std::cout << std::endl << "Testing with no energy points:" << std::endl;
-	ScavTrap scav2("NoEnergy");
+	ScavTrap scav2(scav1);
+	scav2.setName("NoEnergy");
 	scav2.setMp(0);
 	scav2.attack("Target");
 	
 	// Test with no hit points
 	std::cout << std::endl << "Testing with no hit points:" << std::endl;
-	ScavTrap scav3("NearDeath");
+	ScavTrap scav3;
+	scav3.setName("NoHP");
 	scav3.takeDamage(100);  // This should set HP to 0
 	scav3.attack("Target");
 	scav3.beRepaired(50);
