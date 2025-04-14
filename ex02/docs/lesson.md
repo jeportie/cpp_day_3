@@ -105,11 +105,9 @@ public:
 
 class Derived : public Base {
 public:
-    void someFunction() override { /* ... */ }
+    void someFunction()
 };
 ```
-
-The `override` keyword (C++11 and later) helps catch errors by ensuring that the function actually overrides a virtual function from the base class.
 
 ## Best Practices for Inheritance
 

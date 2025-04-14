@@ -303,8 +303,6 @@ Its attributes and member functions will be inherited from its parent classes:
 - attack()(ScavTrap)
 
 
-C++ - Module 03 Inheritance
-
 In addition to the special functions from both parent classes, DiamondTrap will have
 its own special ability:
 

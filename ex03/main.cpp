@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 13:45:10 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/12 14:05:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:08:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "src/class/ClapTrap.hpp"
+#include "src/class/DiamondTrap.hpp"
 #include "src/class/ScavTrap.hpp"
 #include "src/class/FragTrap.hpp"
 #include <iostream>
@@ -83,6 +84,38 @@ int	main(void)
 	frag3.takeDamage(100);  // This should set HP to 0
 	frag3.attack("Target");
 	frag3.beRepaired(60);
+
+    std::cout << "========== DiamondTrap ==========" << std::endl;
+    DiamondTrap diamond("Shiny");
+
+    diamond.attack("Enemy");
+    diamond.takeDamage(20);
+    diamond.beRepaired(10);
+	diamond.highFivesGuys();
+	diamond.guardGate();
+    diamond.whoAmI();
+
+    DiamondTrap diamond2;
+
+    diamond2.attack("Enemy");
+    diamond2.takeDamage(20);
+    diamond2.beRepaired(10);
+	diamond2.highFivesGuys();
+	diamond2.guardGate();
+    diamond2.whoAmI();
+	diamond2.setMp(0);
+	diamond2.beRepaired(60);
+
+   DiamondTrap diamond3(diamond);
+
+    diamond3.attack("Enemy");
+    diamond2.takeDamage(20);
+    diamond2.beRepaired(10);
+	diamond3.highFivesGuys();
+	diamond3.guardGate();
+    diamond3.whoAmI();
+	diamond3.takeDamage(100);
+	diamond3.beRepaired(60);
 	
 	std::cout << std::endl << "End of program - watch destruction order:" << std::endl;
 	return (0);
