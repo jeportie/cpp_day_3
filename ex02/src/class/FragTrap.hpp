@@ -13,23 +13,23 @@
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
+#include "ClapTrap.hpp"
 # include <iostream>
+#include <string>
 
-class FragTrap
+class FragTrap : public ClapTrap
 {
 public:
 	FragTrap(void);
-	FragTrap(int const fooNb);
+	FragTrap(std::string const name);
 	FragTrap(const FragTrap& src);
 	~FragTrap(void);
 
 	FragTrap& operator=(const FragTrap& rhs);
 
-	int getFoo(void) const;
-	std::string toString(void) const; // serialise class to string
+	void		highFivesGuys(void) const;
 
-private:
-	int _foo;
+	std::string toString(void) const; // serialise class to string
 };
 
 // Overload operator<< for output streaming

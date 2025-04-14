@@ -31,9 +31,6 @@ public:
 	void		guardGate(void);
 
 	std::string	toString(void) const; // serialise class to string
-
-private:
-	int _foo;
 };
 
 // Overload operator<< for output streaming

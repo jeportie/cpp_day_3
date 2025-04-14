@@ -68,9 +68,11 @@ void ScavTrap::attack(const std::string& target)
 		setMp(getMp() - 1);
 	}
 	else if (!getHp())
-		std::cout << "[DEAD] " << getName() << " is dead - Attack not possible!" << std::endl;
+		std::cout << "[DEAD] " << getName()
+				  << " is dead - Attack not possible!" << std::endl;
 	else
-		std::cout << "[NO_MP] "<< getName() << " has no more mp - Attack not possible!" << std::endl;
+		std::cout << "[NO_MP] "<< getName()
+				  << " has no more mp - Attack not possible!" << std::endl;
 }
 
 void ScavTrap::guardGate(void)
